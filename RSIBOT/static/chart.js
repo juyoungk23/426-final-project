@@ -37,7 +37,7 @@ var candleSeries = chart.addCandlestickSeries({
 });
 
 
-fetch('juyoungk-final-project.herokuapp.com/history')
+fetch('/history')
 	.then((r) => r.json())
 	.then(function (response) {
 
