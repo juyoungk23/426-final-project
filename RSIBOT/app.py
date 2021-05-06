@@ -64,5 +64,5 @@ def history():
     return jsonify(processed_candlesticks)
 
 
-if __name__ == "__main__":
+if __name__ == "__app__":
     app.run(debug=False)

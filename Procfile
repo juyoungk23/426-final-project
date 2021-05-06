@@ -1,1 +1,2 @@
-worker: python ./RSIBOT/app.py
+
+web: gunicorn ./RSIBOT/app.py
