@@ -3,6 +3,7 @@ from binance.client import Client
 import config
 import csv
 
+
 app = Flask(__name__)
 client = Client(config.API_KEY, config.API_SECRET, tld="us")
 
