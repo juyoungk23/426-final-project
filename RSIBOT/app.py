@@ -39,7 +39,7 @@ def post(post_id):
 
 
 @app.route("/ethusdthistory")
-def ethusdthistory(symbol):
+def ethusdthistory():
     # candles = client.get_klines(
     #     symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_15MINUTE)
     # processed_candles = []
@@ -71,7 +71,7 @@ def ethusdthistory(symbol):
 
 
 @app.route("/btcusdthistory")
-def ethusdthistory(symbol):
+def btcusdthistory():
     # candles = client.get_klines(
     #     symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_15MINUTE)
     # processed_candles = []
