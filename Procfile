@@ -1,2 +1,2 @@
 
-web: gunicorn ./RSIBOT/app.py
+web: gunicorn ./RSIBOT/app:app
