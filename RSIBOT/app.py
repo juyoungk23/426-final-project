@@ -28,6 +28,16 @@ def ethusdt():
     return render_template("ETHchart.html", title=title)
 
 
+@app.route("/btcusdt")
+def btcusdt():
+    return render_template("BTCchart.html", title=title)
+
+
+@app.route("/adausdt")
+def adausdt():
+    return render_template("ADAchart.html", title=title)
+
+
 @app.route("/tokens/<ticker>")
 def tokens(ticker):
     return "The coin is %s" % ticker
@@ -84,6 +94,38 @@ def btcusdthistory():
 
     candlesticks = client.get_historical_klines(
         "BTCUSDT", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
+    )
+
+    processed_candlesticks = []
+
+    for data in candlesticks:
+        candlestick = {
+            "time": data[0] / 1000,
+            "open": data[1],
+            "high": data[2],
+            "low": data[3],
+            "close": data[4],
+        }
+
+        processed_candlesticks.append(candlestick)
+
+    return jsonify(processed_candlesticks)
+
+
+@app.route("/adausdthistory")
+def adausdthistory():
+    # candles = client.get_klines(
+    #     symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_15MINUTE)
+    # processed_candles = []
+
+    # for data in candles:
+    #     candlestick = {"time": data[0] / 1000, "open": data[1],
+    #                    "high": data[2], "low": data[3], "close": data[4]}
+    #     processed_candles.append(candlestick)
+    # return jsonify(processed_candles)
+
+    candlesticks = client.get_historical_klines(
+        "ADAUSDT", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
     )
 
     processed_candlesticks = []
