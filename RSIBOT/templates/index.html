@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+
+<body>
+
+    <h2>{{title}}</h2>
+    <div id="chart"></div>
+    <div id="klines"></div>
+
+
+    <div id="balances">{{balances}}</div>
+
+    <h3>Settings</h3>
+
+    <div id="settings">
+        <input type="checkbox" />RSI
+        <input type="text" id="rsi_length" name="rsi_length" placeholder="14" />
+        Overbought <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="70" />
+        Oversold <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="30" />
+    </div>
+    <script>
+        // var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@kline_1m");
+
+        // var klinesDiv = document.getElementById("klines")
+        // binanceSocket.onmessage = function (event) {
+
+        //     var messageObject = JSON.parse(event.data);
+        //     console.log(messageObject.k.c)
+        //     klinesDiv.append(messageObject.k.c)
+        // }
+    </script>
+
+    <script src="{{ url_for('static', filename='chart.js')}}"></script>
+
+
+</body>
+
+</html>
