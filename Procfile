@@ -1,2 +1,2 @@
-
-web: gunicorn ./RSIBOT/app:app
+import 
+web: gunicorn RSIBOT.app:app
