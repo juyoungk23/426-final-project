@@ -1,11 +1,17 @@
 from flask import Flask, render_template, request, flash, redirect, jsonify
 from binance.client import Client
-import config
+
+# import config
 import csv
+import os
+from os import environ
+
+API_KEY = environ["API_KEY"]
+API_SECRET = environ["API_SECRET"]
 
 
 app = Flask(__name__)
-client = Client(config.API_KEY, config.API_SECRET, tld="us")
+client = Client(API_KEY, API_SECRET, tld="us")
 
 
 @app.route("/")
