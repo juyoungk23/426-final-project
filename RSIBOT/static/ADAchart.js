@@ -2,7 +2,7 @@ var chart = LightweightCharts.createChart(document.getElementById('chart'), {
 	width: 1000,
 	height: 500,
 	layout: {
-		backgroundColor: '#FFFFFF',
+		backgroundColor: '#000000',
 		textColor: 'rgba(255, 255, 255, 0.9)',
 	},
 	grid: {
@@ -37,7 +37,7 @@ var candleSeries = chart.addCandlestickSeries({
 });
 
 
-fetch('https://juyoungk-final-project.herokuapp.com/history')
+fetch('https://juyoungk-final-project.herokuapp.com/adausdthistory')
 	.then((r) => r.json())
 	.then(function (response) {
 
@@ -45,7 +45,7 @@ fetch('https://juyoungk-final-project.herokuapp.com/history')
 	})
 
 
-var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@kline_15m");
+var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/adausdt@kline_15m");
 
 binanceSocket.onmessage = function (event) {
 	var message = JSON.parse(event.data);
