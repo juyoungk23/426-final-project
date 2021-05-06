@@ -37,7 +37,7 @@ var candleSeries = chart.addCandlestickSeries({
 });
 
 
-fetch('http://localhost:5000/history', {
+fetch('https://juyoungk-final-project.herokuapp.com/history', {
 	headers: {
 		"mode": "no-cors"
 	}
