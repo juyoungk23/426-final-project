@@ -1,9 +1,9 @@
 flask
 ta
-binance.client
+binance
 config
 ccxt
-
+websocket
 
 
 # aiodns==2.0.0
