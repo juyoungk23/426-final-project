@@ -1,2 +1,2 @@
-API_KEY = "dummy key"
-API_SECRET = "dummy key"
+API_KEY = "dummy"
+API_SECRET = "dummy"

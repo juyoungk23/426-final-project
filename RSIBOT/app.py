@@ -4,34 +4,34 @@ import config
 import csv
 
 app = Flask(__name__)
-client = Client(config.API_KEY, config.API_SECRET, tld='us')
+client = Client(config.API_KEY, config.API_SECRET, tld="us")
 
 
-@app.route('/')
+@app.route("/")
 def index():
     title = "Charting Website"
     info = client.get_account()
-    balances = info['balances']
+    balances = info["balances"]
     print(balances)
-    return render_template('index.html', title=title, balances=balances)
+    return render_template("index.html", title=title, balances=balances)
 
 
-@app.route('/login')
+@app.route("/login")
 def login():
-    return '<h1>This is the Login page</h1>'
+    return "<h1>This is the Login page</h1>"
 
 
-@app.route('/tokens/<ticker>')
+@app.route("/tokens/<ticker>")
 def tokens(ticker):
     return "The coin is %s" % ticker
 
 
-@app.route('/post/<int:post_id>')
+@app.route("/post/<int:post_id>")
 def post(post_id):
     return "<h2>Post ID is %s</h2>" % post_id
 
 
-@app.route('/history')
+@app.route("/history")
 def history():
     # candles = client.get_klines(
     #     symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_15MINUTE)
@@ -55,7 +55,7 @@ def history():
             "open": data[1],
             "high": data[2],
             "low": data[3],
-            "close": data[4]
+            "close": data[4],
         }
 
         processed_candlesticks.append(candlestick)
@@ -64,4 +64,4 @@ def history():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
