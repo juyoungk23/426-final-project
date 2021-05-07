@@ -14,7 +14,7 @@ app = Flask(__name__)
 client = Client(API_KEY, API_SECRET, tld="us")
 
 
-@app.route("/")
+@app.route("/index")
 def index():
     title = "Juyoung's Final Project"
     # info = client.get_account()
@@ -23,7 +23,7 @@ def index():
     return render_template("index.html", title=title)
 
 
-@app.route("/login")
+@app.route("/")
 def login():
     return render_template("login.html")
 

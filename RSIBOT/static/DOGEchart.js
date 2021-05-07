@@ -37,7 +37,7 @@ var candleSeries = chart.addCandlestickSeries({
 });
 
 
-fetch('https://juyoungk-final-project.herokuapp.com/adausdthistory')
+fetch('https://juyoungk-final-project.herokuapp.com/dogeusdthistory')
 	.then((r) => r.json())
 	.then(function (response) {
 
@@ -45,7 +45,7 @@ fetch('https://juyoungk-final-project.herokuapp.com/adausdthistory')
 	})
 
 
-var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/adausdt@kline_15m");
+var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/dogeusdt@kline_15m");
 
 binanceSocket.onmessage = function (event) {
 	var message = JSON.parse(event.data);
