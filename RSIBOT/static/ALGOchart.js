@@ -2,7 +2,7 @@ var chart = LightweightCharts.createChart(document.getElementById('chart'), {
 	width: 1000,
 	height: 500,
 	layout: {
-		backgroundColor: '#000000',
+		backgroundColor: '#E7E7E7',
 		textColor: 'rgba(255, 255, 255, 0.9)',
 	},
 	grid: {
