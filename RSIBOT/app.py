@@ -30,10 +30,10 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/chart", methods=["post"])
+@app.route("/chart", methods=["post", "get"])
 def chart():
 
-    symbol = request.form["symbol"]
+    symbol = request.form["symbol"].upper()
     lowercaseSymbol = symbol.lower()
     myFile = symbol + "chart.html"
 
