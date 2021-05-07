@@ -7,20 +7,17 @@
 
 <body>
 
+    <div class="topnav">
+        <a href="#home">Home</a>
+        <a class="active" href="/chart" method="post">Chart</a>
+        <a href="#aboutProject">About the Project</a>
+        <a href="#aboutCrypto">About Crypto</a>
+    </div>
+
     <h2>{{title}}</h2>
     <h3>Symbol is {{symbol}}</h3>
     <div id="chart"></div>
     <div id="klines"></div>
-
-    <h3>Settings</h3>
-
-    <div id="settings">
-        <input type="checkbox" />RSI
-        <input type="text" id="rsi_length" name="rsi_length" placeholder="14" />
-        Overbought <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="70" />
-        Oversold <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="30" />
-    </div>
-
 
     <script src="{{ url_for('static', filename='BTCchart.js')}}"></script>
 
