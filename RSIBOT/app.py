@@ -16,25 +16,49 @@ client = Client(API_KEY, API_SECRET, tld="us")
 
 @app.route("/")
 def index():
-    title = "Charting Website"
-    info = client.get_account()
-    balances = info["balances"]
-    print(balances)
+    title = "Juyoung's Final Project"
+    # info = client.get_account()
+    # balances = info["balances"]
+
     return render_template("index.html", title=title)
+
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
+@app.route("/chart", methods=["post"])
+def chart():
+
+    symbol = request.form["symbol"]
+    lowercaseSymbol = symbol.lower()
+    myFile = symbol + "chart.html"
+
+    srcName = "{{ url_for('static', filename='" + symbol + "chart.js')}}"
+    if request.method == "POST":
+
+        print(symbol)
+    title = symbol + " / USD"
+
+    return render_template(myFile, title=title, symbol=symbol, srcName=srcName)
 
 
 @app.route("/ethusdt")
 def ethusdt():
+    title = "Ethereum"
     return render_template("ETHchart.html", title=title)
 
 
 @app.route("/btcusdt")
 def btcusdt():
+    title = "Bitcoin"
     return render_template("BTCchart.html", title=title)
 
 
 @app.route("/adausdt")
 def adausdt():
+    title = "Cardano"
     return render_template("ADAchart.html", title=title)
 
 
@@ -145,4 +169,5 @@ def adausdthistory():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.debug = True
+    app.run()

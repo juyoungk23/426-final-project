@@ -3,29 +3,41 @@
 <head>
     <title>{{title}}</title>
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body>
 
-    <h2>{{title}}</h2>
+    <h1 class="title">{{title}}</h1>
 
-    <h3>Ethereum / USDT</h3>
-    <div id="chart"></div>
-    <div id="klines"></div>
-
-    <h3>Settings</h3>
-
-    <div id="settings">
-        <input type="checkbox" />RSI
-        <input type="text" id="rsi_length" name="rsi_length" placeholder="14" />
-        Overbought <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="70" />
-        Oversold <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="30" />
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#chart">Chart</a>
+        <a href="#aboutProject">About the Project</a>
+        <a href="#aboutCrypto">About Crypto</a>
     </div>
 
 
+    <div>
+        <div id="chart"></div>
+        <div id="klines"></div>
+    </div>
+
+    <form action="/chart" method="post">
+        Select a Cryptocurrency:
+        <input type="text" name="symbol" id="symbol" list="datalist1" />
+        <datalist id="datalist1">
+            <option value="BTC">
+            <option value="ETH">
+            <option value="ADA">
+            <option value="DOGE">
+            <option value="ALGO">
+        </datalist>
+        <input type="submit" value="Chart!" />
+    </form>
+
     <script src="{{ url_for('static', filename='ETHchart.js')}}"></script>
-
-
+    <script src="{{ url_for('static', filename='aboutCrypto.js')}}"></script>
 </body>
 
 </html>
