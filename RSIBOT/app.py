@@ -15,20 +15,17 @@ API_SECRET = "3LWPk1t8mH120OUVwxNWygCwv1HgWBNJQNRMFzsJCiJIEyb4kX7NzVkdPHPqRtM7"
 app = Flask(__name__)
 client = Client(API_KEY, API_SECRET, tld="us")
 
-
 @app.route("/")
+def login():
+    return render_template("login.html")
+
+@app.route("/home")
 def index():
     title = "Juyoung's Final Project"
     # info = client.get_account()
     # balances = info["balances"]
 
     return render_template("index.html", title=title)
-
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
 
 @app.route("/chart")
 def chart():

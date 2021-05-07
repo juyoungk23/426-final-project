@@ -2,21 +2,23 @@
     <head>
         <title>Chart Crypto</title>
         <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-        <link rel="stylesheet" href="../static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/style.css">
     </head>
 
     <body>
 
         <div class="topnav">
-            <a href="/">Home</a>
+            <a href="/home">Home</a>
             <a class="active" href="/chart">Chart</a>
             <a href="/aboutProject">About the Project</a>
             <a href="/aboutCrypto">About Crypto</a>
         </div>
 
     <form action="/chartCrypto" method="post">
-        Select a Cryptocurrency:
-        <input type="text" name="symbol" id="symbol" list="datalist1" />
+        <h1>Select a Cryptocurrency:</h1>
+        <input class="input is-primary" type="text" name="symbol" id="symbol" list="datalist1" placeholder="Symbol" />
         <datalist id="datalist1">
             <option value="BTC">
             <option value="ETH">
@@ -24,7 +26,11 @@
             <option value="DOGE">
             <option value="ALGO">
         </datalist>
-        <input type="submit" value="Chart!" />
+
+        <input class="button is-primary" type="submit" value="Chart!" />
+
+        
     </form>
+
     </body>
 </html>
