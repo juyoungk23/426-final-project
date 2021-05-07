@@ -11,10 +11,27 @@
     <h1 class="title">{{title}}</h1>
 
     <div class="topnav">
-        <a class="active" href="https://juyoungk-final-project.herokuapp.com">Home</a>
-        <a href="https://juyoungk-final-project.herokuapp.com/chart" method="post">Chart</a>
-        <a href="https://juyoungk-final-project.herokuapp.com/aboutProject">About the Project</a>
-        <a href="https://juyoungk-final-project.herokuapp.com/aboutCrypto">About Crypto</a>
+        <form action="/">
+            <button type="submit" name="home" value="home" class="button-is-primary">Home</button>
+        </form>
+
+        <form action="/chart" method="post" symbol="ETH">
+            <button type="submit" name="chart" value="chart">Chart</button>
+        </form>
+
+        <form action="/aboutProject">
+            <button type="submit" name="aboutProject" value="aboutProject" class="button-is-primary">About
+                Project</button>
+        </form>
+
+        <form action="/aboutCrypto">
+            <button type="submit" name="aboutCrypto" value="aboutCrypto" class="button-is-primary">About Crypto</button>
+        </form>
+
+        <form action="/login">
+            <button type="submit" name="login" value="login" class="button-is-primary">Sign In</button>
+        </form>
+
     </div>
 
 

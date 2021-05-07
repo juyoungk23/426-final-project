@@ -30,7 +30,7 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/chart", methods=["post", "get"])
+@app.route("/chart", methods=["post"])
 def chart():
 
     symbol = request.form["symbol"].upper()
@@ -44,6 +44,16 @@ def chart():
     title = symbol + " / USD"
 
     return render_template(myFile, title=title, symbol=symbol, srcName=srcName)
+
+
+@app.route("/aboutProject")
+def aboutProject():
+    return render_template("aboutProject.html")
+
+
+@app.route("/aboutCrypto")
+def aboutCrypto():
+    return render_template("aboutCrypto.html")
 
 
 @app.route("/ethusdt")
