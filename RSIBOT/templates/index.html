@@ -8,9 +8,16 @@
 
 <body>
 
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="/chart">Chart</a>
+        <a href="/aboutProject">About the Project</a>
+        <a href="/aboutCrypto">About Crypto</a>
+    </div>
+
     <h1 class="title">{{title}}</h1>
 
-    <div class="topnav">
+    <!-- <div class="topnav">
         <form action="/">
             <button type="submit" name="home" value="home" class="button-is-primary">Home</button>
         </form>
@@ -32,7 +39,7 @@
             <button type="submit" name="login" value="login" class="button-is-primary">Sign In</button>
         </form>
 
-    </div>
+    </div> -->
 
 
     <div>
@@ -40,21 +47,7 @@
         <div id="klines"></div>
     </div>
 
-    <form action="/chart" method="post">
-        Select a Cryptocurrency:
-        <input type="text" name="symbol" id="symbol" list="datalist1" />
-        <datalist id="datalist1">
-            <option value="BTC">
-            <option value="ETH">
-            <option value="ADA">
-            <option value="DOGE">
-            <option value="ALGO">
-        </datalist>
-        <input type="submit" value="Chart!" />
-    </form>
-
     <script src="{{ url_for('static', filename='ETHchart.js')}}"></script>
-    <script src="{{ url_for('static', filename='aboutCrypto.js')}}"></script>
 </body>
 
 </html>

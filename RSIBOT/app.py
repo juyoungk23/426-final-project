@@ -30,20 +30,28 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/chart", methods=["post"])
+@app.route("/chart")
 def chart():
+
+    return render_template('chart.html')
+
+@app.route("/chartCrypto", methods=['post'])
+def chartCrypto():
 
     symbol = request.form["symbol"].upper()
     lowercaseSymbol = symbol.lower()
-    myFile = symbol + "chart.html"
+    # myFile = symbol + "chart.html"
 
-    srcName = "{{ url_for('static', filename='" + symbol + "chart.js')}}"
-    if request.method == "POST":
+    switcher = {
+        "ETH": ethusdt(),
+        "BTC": btcusdt(),
+        "ADA": adausdt(),
+        "ALGO": algousdt(),
+        "DOGE": dogeusdt()
+    }
 
-        print(symbol)
-    title = symbol + " / USD"
 
-    return render_template(myFile, title=title, symbol=symbol, srcName=srcName)
+    return switcher.get(symbol, "Invalid Symbol")
 
 
 @app.route("/aboutProject")
@@ -58,20 +66,26 @@ def aboutCrypto():
 
 @app.route("/ethusdt")
 def ethusdt():
-    title = "Ethereum"
-    return render_template("ETHchart.html", title=title)
+    return render_template("ETHchart.html", title="Ethereum", symbol="ETH")
 
 
 @app.route("/btcusdt")
 def btcusdt():
-    title = "Bitcoin"
-    return render_template("BTCchart.html", title=title)
+    return render_template("BTCchart.html", title="Bitcoin", symbol="BTC")
 
 
 @app.route("/adausdt")
 def adausdt():
-    title = "Cardano"
-    return render_template("ADAchart.html", title=title)
+    return render_template("ADAchart.html", title="Cardano", symbol="ADA")
+
+@app.route("/algousdt")
+def algousdt():
+    return render_template("ALGOchart.html", title="Algorand", symbol="ADA")
+
+@app.route("/dogeusdt")
+def dogeusdt():
+    return render_template("DOGEchart.html", title="Dogecoin", symbol="DOGE")
+
 
 
 @app.route("/tokens/<ticker>")
@@ -162,6 +176,71 @@ def adausdthistory():
 
     candlesticks = client.get_historical_klines(
         "ADAUSDT", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
+    )
+
+    processed_candlesticks = []
+
+    for data in candlesticks:
+        candlestick = {
+            "time": data[0] / 1000,
+            "open": data[1],
+            "high": data[2],
+            "low": data[3],
+            "close": data[4],
+        }
+
+        processed_candlesticks.append(candlestick)
+
+    return jsonify(processed_candlesticks)
+
+
+@app.route("/algousdthistory")
+def algousdthistory():
+    # candles = client.get_klines(
+    #     symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_15MINUTE)
+    # processed_candles = []
+
+    # for data in candles:
+    #     candlestick = {"time": data[0] / 1000, "open": data[1],
+    #                    "high": data[2], "low": data[3], "close": data[4]}
+    #     processed_candles.append(candlestick)
+    # return jsonify(processed_candles)
+
+    candlesticks = client.get_historical_klines(
+        "ALGOUSDT", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
+    )
+
+    processed_candlesticks = []
+
+    for data in candlesticks:
+        candlestick = {
+            "time": data[0] / 1000,
+            "open": data[1],
+            "high": data[2],
+            "low": data[3],
+            "close": data[4],
+        }
+
+        processed_candlesticks.append(candlestick)
+
+    return jsonify(processed_candlesticks)
+
+
+
+@app.route("/dogeusdthistory")
+def dogeusdthistory():
+    # candles = client.get_klines(
+    #     symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_15MINUTE)
+    # processed_candles = []
+
+    # for data in candles:
+    #     candlestick = {"time": data[0] / 1000, "open": data[1],
+    #                    "high": data[2], "low": data[3], "close": data[4]}
+    #     processed_candles.append(candlestick)
+    # return jsonify(processed_candles)
+
+    candlesticks = client.get_historical_klines(
+        "DOGEUSDT", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
     )
 
     processed_candlesticks = []

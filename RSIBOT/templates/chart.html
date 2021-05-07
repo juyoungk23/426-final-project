@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Chart Crypto</title>
+        <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+
+    <body>
+
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a class="active" href="/chart">Chart</a>
+            <a href="/aboutProject">About the Project</a>
+            <a href="/aboutCrypto">About Crypto</a>
+        </div>
+
+    <form action="/chartCrypto" method="post">
+        Select a Cryptocurrency:
+        <input type="text" name="symbol" id="symbol" list="datalist1" />
+        <datalist id="datalist1">
+            <option value="BTC">
+            <option value="ETH">
+            <option value="ADA">
+            <option value="DOGE">
+            <option value="ALGO">
+        </datalist>
+        <input type="submit" value="Chart!" />
+    </form>
+    </body>
+</html>
