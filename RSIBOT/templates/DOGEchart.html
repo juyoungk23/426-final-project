@@ -1,21 +1,22 @@
 <html>
-
-<head>
+  <head>
     <title>{{title}}</title>
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../static/style.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="topnav">
-        <a href="/home">Home</a>
-        <a class="active" href="/chart">Chart</a>
-        <a href="/aboutProject">About the Project</a>
-        <a href="/aboutCrypto">About Crypto</a>
-        <a href="/signout">Sign Out</a>
+      <a href="/home">Home</a>
+      <a class="active" href="/chart">Chart</a>
+      <a href="/aboutProject">About the Project</a>
+      <a href="/aboutCrypto">About Crypto</a>
+      <a href="/signout">Sign Out</a>
     </div>
 
     <h2 class="title">{{title}}</h2>
@@ -23,19 +24,26 @@
     <div id="chart"></div>
     <div id="klines"></div>
 
-    <h3>Settings</h3>
+    <form action="/chartCrypto" method="post">
+      <input
+        class="input is-primary"
+        type="text"
+        name="symbol"
+        id="symbol"
+        list="datalist1"
+        placeholder="Symbol"
+      />
+      <datalist id="datalist1">
+        <option value="BTC"></option>
+        <option value="ETH"></option>
+        <option value="ADA"></option>
+        <option value="DOGE"></option>
+        <option value="ALGO"></option>
+      </datalist>
 
-    <div id="settings">
-        <input type="checkbox" />RSI
-        <input type="text" id="rsi_length" name="rsi_length" placeholder="14" />
-        Overbought <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="70" />
-        Oversold <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="30" />
-    </div>
-
+      <input class="button is-primary" type="submit" value="Chart!" />
+    </form>
 
     <script src="{{ url_for('static', filename='DOGEchart.js')}}"></script>
-
-
-</body>
-
+  </body>
 </html>

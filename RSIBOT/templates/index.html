@@ -1,70 +1,68 @@
 <html>
-
-<head>
+  <head>
     <title>{{title}}</title>
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../static/style.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="topnav">
-        <a class="active" href="/home">Home</a>
-        <a href="/chart">Chart</a>
-        <a href="/aboutProject">About the Project</a>
-        <a href="/aboutCrypto">About Crypto</a>
-        <a href="/signout">Sign Out</a>
+      <a class="active" href="/home">Home</a>
+      <a href="/chart">Chart</a>
+      <a href="/aboutProject">About the Project</a>
+      <a href="/aboutCrypto">About Crypto</a>
+      <a href="/signout">Sign Out</a>
     </div>
 
-    <h1 class="title">{{title}}</h1>
-    <h1 class="subtitle">Cryptocurrency Charting Website</h1>
+    <section class="section is-large">
+      <h1 class="title">{{title}}</h1>
+      <h1 class="subtitle">Cryptocurrency Charting Website</h1>
 
-    <figure class="image is-128x128">
-        <img src="https://e7.pngegg.com/pngimages/152/589/png-clipart-altcoins-cryptocurrency-bitcoin-ethereum-blockchain-bitcoin-text-logo.png">
-    </figure>
+      <figure class="image is-128x128">
+        <img
+          src="https://e7.pngegg.com/pngimages/152/589/png-clipart-altcoins-cryptocurrency-bitcoin-ethereum-blockchain-bitcoin-text-logo.png"
+        />
+      </figure>
+    </section>
 
-
-    <div>
+    <section class="section is-small">
+      <h2 class="title">Ethereum / USD</h2>
+      <div>
         <div id="chart"></div>
         <div id="klines"></div>
-    </div>
+      </div>
 
-    <script src="{{ url_for('static', filename='ETHchart.js')}}"></script>
+      <script src="{{ url_for('static', filename='ETHchart.js')}}"></script>
 
-    <button class="button is-dark" onclick="toggle_dark_mode();">Toggle Dark Mode
-        <script>  
-        
-            var dataLayer = window.dataLayer ;
-            dataLayer.push({
-                "dark-mode": 0
-            })
+      <h3 class="subtitle">All timeframes are weekly</h3>
+    </section>
 
-            console.log(dataLayer)
-            
-            toggle_dark_mode(dataLayer)
-            function toggle_dark_mode(dataLayer) {
-                if (dataLayer['dark-mode'] == 0) {
-                var element = document.body;
-                console.log("HERE");
-                element.classList.toggle("dark-mode")
-                }
-            }
-            
-        </script>
-        
-        
-        <script>
-            
-          
-    
-        </script>
-   </button>
-    
+    <button class="button is-dark" onclick="toggle_dark_mode();">
+      Toggle Dark Mode
+      <script>
+        var dataLayer = window.dataLayer;
+        dataLayer.push({
+          "dark-mode": 0,
+        });
 
-</body>
+        console.log(dataLayer);
 
+        toggle_dark_mode(dataLayer);
+        function toggle_dark_mode(dataLayer) {
+          // if (dataLayer['dark-mode'] == 0) {
+          var element = document.body;
+          console.log("HERE");
+          element.classList.toggle("dark-mode");
+        }
+      </script>
 
+      <script></script>
+    </button>
+  </body>
 </html>
