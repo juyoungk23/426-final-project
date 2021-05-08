@@ -205,7 +205,7 @@ def algousdthistory():
     # return jsonify(processed_candles)
 
     candlesticks = client.get_historical_klines(
-        "ALGOUSDT", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
+        "ALGOUSD", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
     )
 
     processed_candlesticks = []
