@@ -18,27 +18,10 @@
       <a href="/home">Home</a>
       <a href="/chart">Chart</a>
       <a href="/aboutProject">About the Project</a>
-      <a class="active" href="/signout">Sign Out</a>
+      <a class="active" href="/">Sign Out</a>
     </div>
 
     <h1 class="title">Thanks for viewing the project!</h1>
-
-    <div data-onsuccess="onSignOut"></div>
-
-    <script>
-      function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log("User signed out.");
-        });
-      }
-
-      function onLoad() {
-        gapi.load("auth2", function () {
-          gapi.auth2.init();
-        });
-      }
-    </script>
 
     <button class="button is-live">
       <a href="#" onclick="signOut();">Sign out</a>
