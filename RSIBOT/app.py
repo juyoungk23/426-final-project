@@ -6,11 +6,10 @@ import csv
 import os
 from os import environ
 
-# API_KEY = environ["API_KEY"]
-# API_SECRET = environ["API_SECRET"]
+API_KEY = environ["API_KEY"]
+API_SECRET = environ["API_SECRET"]
 
-API_KEY = "jkBEHfqug2FwB6LNSfL9ZllySIxDnp4Ovw52Ahou8IESogieLIzrkKUdTYI6bbP6"
-API_SECRET = "3LWPk1t8mH120OUVwxNWygCwv1HgWBNJQNRMFzsJCiJIEyb4kX7NzVkdPHPqRtM7"
+
 
 app = Flask(__name__)
 client = Client(API_KEY, API_SECRET, tld="us")
@@ -18,6 +17,10 @@ client = Client(API_KEY, API_SECRET, tld="us")
 @app.route("/")
 def login():
     return render_template("login.html")
+
+@app.route("/signout")
+def signout():
+    return render_template("signout.html")
 
 @app.route("/home")
 def index():
