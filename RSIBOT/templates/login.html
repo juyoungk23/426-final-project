@@ -1,47 +1,57 @@
 <html>
-
-<head>
+  <head>
     <title>Juyoung's COMP 426 Final Project</title>
-    <meta name="google-signin-client_id"
-        content="834371655279-h65l0t4ga4q9h3tivg8d06e3mffjpibg.apps.googleusercontent.com">
+    <meta
+      name="google-signin-client_id"
+      content="834371655279-h65l0t4ga4q9h3tivg8d06e3mffjpibg.apps.googleusercontent.com"
+    />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
 
-<body>
-    <h1>Login</h1>
+  <body>
+    <h1 class="title">Login</h1>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
     <script>
-        function signOut() {
-          var auth2 = gapi.auth2.getAuthInstance();
-          auth2.signOut().then(function () {
-            console.log('User signed out.');
-          });
-        }
-    
-        function onLoad() {
-          gapi.load('auth2', function() {
-            gapi.auth2.init();
-          });
-        }
-      </script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      }
+
+      function onLoad() {
+        gapi.load("auth2", function () {
+          gapi.auth2.init();
+        });
+      }
+    </script>
+
+    <button class="button is-live">
       <a href="#" onclick="signOut();">Sign out</a>
-    
-      <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer>
-      </script>
-</body>
+    </button>
 
-<script>
+    <script
+      src="https://apis.google.com/js/platform.js?onload=onLoad"
+      async
+      defer
+    ></script>
+  </body>
+
+  <script>
     function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log("Name: " + profile.getName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-        location.href = '/home';
+      location.href = "/home";
     }
-    
-</script>
-
+  </script>
 </html>

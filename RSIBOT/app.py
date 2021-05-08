@@ -80,7 +80,7 @@ def adausdt():
 
 @app.route("/algousdt")
 def algousdt():
-    return render_template("ALGOchart.html", title="Algorand", symbol="ADA")
+    return render_template("ALGOchart.html", title="Algorand", symbol="ALGO")
 
 @app.route("/dogeusdt")
 def dogeusdt():

@@ -1,36 +1,43 @@
 <html>
-
-<head>
+  <head>
     <title>Juyoung's COMP 426 Final Project</title>
-    <meta name="google-signin-client_id"
-        content="834371655279-h65l0t4ga4q9h3tivg8d06e3mffjpibg.apps.googleusercontent.com">
+    <meta
+      name="google-signin-client_id"
+      content="834371655279-h65l0t4ga4q9h3tivg8d06e3mffjpibg.apps.googleusercontent.com"
+    />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../static/style.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="topnav">
-        <a href="/home">Home</a>
-        <a href="/chart">Chart</a>
-        <a href="/aboutProject">About the Project</a>
-        <a href="/aboutCrypto">About Crypto</a>
-        <a class="active" href="/signout">Sign Out</a>
+      <a href="/home">Home</a>
+      <a href="/chart">Chart</a>
+      <a href="/aboutProject">About the Project</a>
+      <a href="/aboutCrypto">About Crypto</a>
+      <a class="active" href="/signout">Sign Out</a>
     </div>
 
     <h1 class="title">Thanks for viewing the project!</h1>
 
     <a class="button is-live" href="#" onclick="signOut();">Sign out</a>
     <script>
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-        }
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      }
+
+      function onLoad() {
+        gapi.load("auth2", function () {
+          gapi.auth2.init();
+        });
+      }
     </script>
-</body>
-
-
+  </body>
 </html>
