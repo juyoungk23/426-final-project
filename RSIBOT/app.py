@@ -9,8 +9,6 @@ from os import environ
 API_KEY = environ["API_KEY"]
 API_SECRET = environ["API_SECRET"]
 
-
-
 app = Flask(__name__)
 client = Client(API_KEY, API_SECRET, tld="us")
 
