@@ -45,5 +45,10 @@
       <input class="button is-primary" type="submit" value="Chart!" />
     </form>
     <script src="{{ url_for('static', filename='ETHchart.js')}}"></script>
+    <a href="#" onclick="SelectSurveyItem('<% 8 %>', '<% 2 %>'); return false;">Select</a>
+    <script>function SelectSurveItem(itemId, pid) {
+      console.log(itemId, pid)
+
+    }</script>
   </body>
 </html>

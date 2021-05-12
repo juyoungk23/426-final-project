@@ -36,8 +36,8 @@ var candleSeries = chart.addCandlestickSeries({
 	wickUpColor: 'rgba(255, 144, 0, 1)',
 });
 
-var symbol = 
-fetch('https://juyoungk-final-project.herokuapp.com/ethusdthistory')
+
+fetch('https://juyoungk-final-project.herokuapp.com/adaethhistory')
 	.then((r) => r.json())
 	.then(function (response) {
 
@@ -45,7 +45,7 @@ fetch('https://juyoungk-final-project.herokuapp.com/ethusdthistory')
 	})
 
 
-var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@kline_15m");
+var binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/adaeth@kline_15m");
 
 binanceSocket.onmessage = function (event) {
 	var message = JSON.parse(event.data);

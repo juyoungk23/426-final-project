@@ -9,10 +9,12 @@ from os import environ
 API_KEY = environ["API_KEY"]
 API_SECRET = environ["API_SECRET"]
 
+
+
 app = Flask(__name__)
 client = Client(API_KEY, API_SECRET, tld="us")
 
-@app.route("/")
+@app.route("/login")
 def login():
     return render_template("login.html")
 
@@ -20,7 +22,7 @@ def login():
 def signout():
     return render_template("signout.html")
 
-@app.route("/home")
+@app.route("/")
 def index():
     title = "Juyoung's Final Project"
     # info = client.get_account()
@@ -38,19 +40,22 @@ def chartCrypto():
 
     symbol = request.form["symbol"].upper()
     lowercaseSymbol = symbol.lower()
-    # myFile = symbol + "chart.html"
+    myFile = symbol + "chart.html"
+
+
+
 
     switcher = {
         "ETH": ethusdt(),
         "BTC": btcusdt(),
         "ADA": adausdt(),
         "ALGO": algousdt(),
-        "DOGE": dogeusdt()
+        "DOGE": dogeusdt(),
+        "ADAETH": adaeth()
     }
-
-
     return switcher.get(symbol, "Invalid Symbol")
 
+  
 
 @app.route("/aboutProject")
 def aboutProject():
@@ -83,6 +88,11 @@ def algousdt():
 @app.route("/dogeusdt")
 def dogeusdt():
     return render_template("DOGEchart.html", title="Dogecoin", symbol="DOGE")
+
+@app.route("/adaeth")
+def adaeth():
+    return render_template("ADAETHchart.html", title="Cardano / Ethereum", symbol="ADAETH")
+
 
 
 
@@ -256,6 +266,37 @@ def dogeusdthistory():
 
     return jsonify(processed_candlesticks)
 
+
+@app.route("/adaethhistory")
+def adaethhistory():
+    # candles = client.get_klines(
+    #     symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_15MINUTE)
+    # processed_candles = []
+
+    # for data in candles:
+    #     candlestick = {"time": data[0] / 1000, "open": data[1],
+    #                    "high": data[2], "low": data[3], "close": data[4]}
+    #     processed_candles.append(candlestick)
+    # return jsonify(processed_candles)
+
+    candlesticks = client.get_historical_klines(
+        "ADAETH", Client.KLINE_INTERVAL_1WEEK, "1 Jan, 2017"
+    )
+
+    processed_candlesticks = []
+
+    for data in candlesticks:
+        candlestick = {
+            "time": data[0] / 1000,
+            "open": data[1],
+            "high": data[2],
+            "low": data[3],
+            "close": data[4],
+        }
+
+        processed_candlesticks.append(candlestick)
+
+    return jsonify(processed_candlesticks)
 
 if __name__ == "__main__":
     app.debug = True
